@@ -7,7 +7,7 @@
 * <kbd>Ctrl</kbd>+<kbd>\\</kbd> mercilessly kill (terminate and dump core) the process that is currently in the foreground.
 * <kbd>Ctrl</kbd>+<kbd>T</kbd> ask OS operating system to show information about the running command
 
-To kill zombie processes using [process ID][1] (find PID using `pgrep` or `ps`) and `kill`:
+To kill zombie processes using [process ID][1] (find PID using `pgrep` or `ps`) and [`kill`][2]:
 
      % kill -9 PID
 
