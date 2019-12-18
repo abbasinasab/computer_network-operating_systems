@@ -1,12 +1,7 @@
 # useful unix command
 
 
-## To kill annoying process: 
-* <kbd>Ctrl</kbd>+<kbd>Z</kbd>: pause a process and give return conrol to terminal. 
-* <kbd>Ctrl</kbd>+<kbd>C</kbd>: politely ask the process to shut down now.
-* <kbd>Ctrl</kbd>+<kbd>\\</kbd>: mercilessly kill the process that is currently in the foreground.
-
-### Quick:
+### Quick (annoying process):
 * <kbd>Ctrl</kbd>+<kbd>z</kbd> suspends process execution
 * <kbd>Ctrl</kbd>+<kbd>c</kbd> politely asks the process to terminate
 * <kbd>Ctrl</kbd>+<kbd>\\</kbd> mercilessly kill (terminate and dump core) the process that is currently in the foreground.
