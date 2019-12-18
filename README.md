@@ -2,38 +2,38 @@
 
 
 ## To kill annoying process: 
-* <kbd>Ctrl</kbd>+<kbd>Z</kbd>: pause a process and give return conrol to shell. 
+* <kbd>Ctrl</kbd>+<kbd>Z</kbd>: pause a process and give return conrol to terminal. 
 * <kbd>Ctrl</kbd>+<kbd>C</kbd>: politely ask the process to shut down now.
 * <kbd>Ctrl</kbd>+<kbd>\\</kbd>: mercilessly kill the process that is currently in the foreground.
 
-Ctrl-C (in older Unixes, DEL) sends an INT signal ("interrupt", SIGINT); by default, this causes the process to terminate.
-Ctrl-Z sends a TSTP signal ("terminal stop", SIGTSTP); by default, this causes the process to suspend execution.
-Ctrl-\ sends a QUIT signal (SIGQUIT); by default, this causes the process to terminate and dump core.
-Ctrl-T (not supported on all UNIXes) sends an INFO signal (SIGINFO); by default, and if supported by the command, this causes the operating system to show information about the running command.
+### Quick:
+* <kbd>Ctrl</kbd>+<kbd>z</kbd> suspends process execution
+* <kbd>Ctrl</kbd>+<kbd>c</kbd> politely asks the process to terminate
+* <kbd>Ctrl</kbd>+<kbd>\\</kbd> mercilessly kill (terminate and dump core) the process that is currently in the foreground.
+* <kbd>Ctrl</kbd>+<kbd>T</kbd> (sends an INFO signal (SIGINFO); by default, and if supported by the command, this causes the operating system to show information about the running command.
 
 ### Terse:
 
-SIGTSTP suspension  thru terminal (ctrl-z), can be caught
-SIGINT: termination thru terminal (ctrl-c) with grace, can be caught
-SIGQUIT termination thru terminal (ctrl-\) with dump core, can be caught
-SIGSTOP suspension  thru shell, cannot be caught
-SIGTERM termination thru shell with grace first if not kill, can be caught
-SIGKILL termination thru shell immediately, cannot be caught
+* SIGTSTP suspension     thru terminal (ctrl-z)                  can be caught
+* SIGINT: termination    thru terminal (ctrl-c) with grace       can be caught
+* SIGQUIT kill           thru terminal (ctrl-\) with dump core   can be caught
+* SIGSTOP suspension     thru shell                              cannot be caught
+* SIGTERM termination    thru shell with grace first if not kill can be caught
+* SIGKILL kill           thru shell immediately                  cannot be caught
 
 ### Verbose:
 
-SIGTSTP is the termial pause signal. The only behavior is to pause the process; the signal cannot be caught or ignored. The shell uses pausing (and its counterpart, resuming via 'fg') to implement job control.
+* SIGTSTP is the termial pause signal. The default behavior is to pause the process; the signal cannot be caught or ignored. The shell uses pausing (and its counterpart, resuming via SIGCONT 'fg') to implement job control.
 
-SIGINT is the interrupt signal. The terminal sends it to the foreground process when the user presses ctrl-c. The default behavior is to terminate the process, but it can be caught or ignored. The intention is to provide a mechanism for an orderly, graceful shutdown.
+* SIGINT is the interrupt signal. The terminal sends it to the foreground process when the user presses ctrl-c. The *default* behavior is to terminate the process, but it can be caught or ignored. The intention is to provide a mechanism for an orderly, graceful shutdown.
 
-SIGQUIT is the dump core signal. The terminal sends it to the foreground process when the user presses ctrl-\. The default behavior is to terminate the process and dump core, but it can be caught or ignored. The intention is to provide a mechanism for the user to abort the process. You can look at SIGINT as "user-initiated happy termination" and SIGQUIT as "user-initiated unhappy termination."
+* SIGQUIT is the dump core signal. The terminal sends it to the foreground process when the user presses ctrl-\. The *default* behavior is to terminate the process and dump core, but it can be caught or ignored. The intention is to provide a mechanism for the user to abort the process. You can look at SIGINT as "user-initiated happy termination" and SIGQUIT as "user-initiated unhappy termination."
 
+* SIGSTOP is the pause signal. The *only* behavior is to pause the process; the signal cannot be caught or ignored. The shell uses pausing (and its counterpart, resuming via SIGCONT) to implement job control.
 
-SIGTERM is the termination signal. The default behavior is to terminate the process, but it also can be caught or ignored. The intention is to kill the process, gracefully or not, but to first allow it a chance to cleanup. (You can look at SIGINT as SIGTERM where intended specifically for requests from the terminal: particular input characters can be assigned to generate these signals)
+* SIGTERM is the termination signal. The *default* behavior is to terminate the process, but it also can be caught or ignored. The intention is to kill the process, gracefully or not, but to first allow it a chance to cleanup. (You can look at SIGINT as SIGTERM where intended specifically for requests from the terminal: particular input characters can be assigned to generate these signals)
 
-SIGSTOP is the pause signal. The only behavior is to pause the process; the signal cannot be caught or ignored. The shell uses pausing (and its counterpart, resuming via SIGCONT) to implement job control.
-
-SIGKILL is the kill signal. The only behavior is to kill the process, immediately. As the process cannot catch the signal, it cannot cleanup, and thus this is a signal of last resort.
+* SIGKILL is the kill signal. The *only* behavior is to kill the process, immediately. As the process cannot catch the signal, it cannot cleanup, and thus this is a signal of last resort.
 
 
 Like KILL, STOP can’t be caught, blocked, or ignored: it always stops the receiving process. TSTP on the other hand can be ignored or handled in a different way; for example, shells, and Emacs, set up TSTP handlers to deal with CtrlZ themselves. This behaviour in shells ensures that pressing CtrlZ is always safe, and won’t get you stuck in a terminal with a stopped process and no way of resuming it.
