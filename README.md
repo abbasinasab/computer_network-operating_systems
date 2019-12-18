@@ -1,6 +1,7 @@
-# useful unix command
+# random OS/Network concepts and commands
 
 
+---
 ## Signals (IPC), kill and annoying processes
 
 ### Quick
@@ -56,4 +57,4 @@ To develop this page I heavily used [man signal][5] and borrowed tons of knowled
   [8]: https://en.wikipedia.org/wiki/Signal_(IPC)
   [9]: https://www.quora.com/
   
-  
+  ---
