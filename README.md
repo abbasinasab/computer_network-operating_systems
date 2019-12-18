@@ -1,7 +1,9 @@
 # useful unix command
 
 
-### Quick (annoying process):
+## Signals (IPC), kill and annoying processes
+
+### Quick
 * <kbd>Ctrl</kbd>+<kbd>z</kbd> suspends process execution
 * <kbd>Ctrl</kbd>+<kbd>c</kbd> politely asks the process to terminate
 * <kbd>Ctrl</kbd>+<kbd>\\</kbd> mercilessly kill (terminate and dump core) the process that is currently in the foreground.
@@ -11,14 +13,14 @@ To kill zombie processes using [process ID][1] (find PID using `pgrep`][2] or `p
 
      % kill -9 PID
 
-### Terse:
+### Terse
 
-* **SIGTST**P suspension     thru terminal (ctrl-z)                  can be caught
-* **SIGINT** termination    thru terminal (ctrl-c) with grace       can be caught
-* **SIGQUIT** kill           thru terminal (ctrl-\) with dump core   can be caught
-* **SIGSTOP** suspension     thru shell                              cannot be caught
-* **SIGTERM** termination    thru shell with grace first if not kill can be caught
-* **SIGKILL** kill           thru shell immediately                  cannot be caught
+* **SIGTSTP** suspension      thru terminal (ctrl-z)                  can be caught
+* **SIGINT** termination      thru terminal (ctrl-c) with grace       can be caught
+* **SIGQUIT** kill            thru terminal (ctrl-\) with dump core   can be caught
+* **SIGSTOP** suspension      thru shell                              cannot be caught
+* **SIGTERM** termination     thru shell with grace first if not kill can be caught
+* **SIGKILL** kill            thru shell immediately                  cannot be caught
 
 ### Verbose:
 
@@ -37,11 +39,11 @@ To kill zombie processes using [process ID][1] (find PID using `pgrep`][2] or `p
 You can send these signals via the [kill][4] command. 
 
 
-### reminders
+### Reminders
 * Shell is a program which processes commands and returns output, like bash in Linux. Exteremly roughly speaking, shell is an OS thing! Since the kernel is really low-level a shell is provided - a program that let's the user interact with the kernel in an easy way. 
 * Terminal is a physical program for handling text input/output. It also runs a shell to execute commands. (In the past it was a physical device (teletypes) with monitors, keyboards and then its concept was transferred into software, like Gnome-Terminal.
 
-### credits
+### References
 To develop this page I heavily used [man signal][5] and borrowed tons of knowledge from many fruitful discussions and posts on [askubuntu][6], [stackoverflow][7], [wikipedia][8], [quora][9] and etc.
 
   [1]: http://en.wikipedia.org/wiki/Process_identifier
