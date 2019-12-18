@@ -42,7 +42,8 @@ You can send these signals via the [kill][2] command.
 * Terminal is a physical program for handling text input/output. It also runs a shell to execute commands. (In the past it was a physical device (teletypes) with monitors, keyboards and then its concept was transferred into software, like Gnome-Terminal.
 
 ### credits
-To develop this page I heavily used [man signal][3] and borrowed tons of knowledge from many fruitful discussions and posts on askubuntu[4], stackoverflow[5], wikipedia[6], quora[7] and etc. 
+To develop this page I heavily used [man signal][3] and borrowed tons of knowledge from many fruitful discussions and posts on [askubuntu][4], [stackoverflow][5], [wikipedia][6], [quora][7] and etc.
+
   [1]: http://en.wikipedia.org/wiki/Process_identifier
   [2]: http://man.cx/kill
   [3]: http://man.cx/signal(7)
